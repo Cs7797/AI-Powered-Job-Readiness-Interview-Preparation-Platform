@@ -1,0 +1,194 @@
+@use "sass:color";
+
+$bg-page: #0d1117;
+$bg-card: #161b22;
+$bg-panel: #1c2230;
+$bg-input: #1e2535;
+$border-color: #2a3348;
+$text-primary: #e6edf3;
+$text-muted: #7d8590;
+$accent: #ff2d78;
+
+.auth-page {
+    min-height: 100vh;
+    width: 100%;
+    background-color: $bg-page;
+    color: $text-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    .form-container {
+        width: 100%;
+        max-width: 440px;
+        background-color: $bg-card;
+        border: 1px solid $border-color;
+        border-radius: 0.8rem;
+        padding: 2.5rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+        box-sizing: border-box;
+
+        &.loading-container {
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            gap: 1.25rem;
+
+            h1 {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: $text-primary;
+                margin: 0;
+            }
+        }
+    }
+
+    .auth-header {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .auth-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin: 0;
+            color: $text-primary;
+        }
+
+        .auth-subtitle {
+            font-size: 0.875rem;
+            color: $text-muted;
+            line-height: 1.4;
+            margin: 0;
+        }
+    }
+
+    .auth-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        width: 100%;
+
+        label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: $text-primary;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            background-color: $bg-input;
+            border: 1px solid $border-color;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: $text-primary;
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
+
+            &:focus {
+                border-color: $accent;
+                box-shadow: 0 0 0 2px rgba($accent, 0.15);
+            }
+
+            &::placeholder {
+                color: rgba($text-muted, 0.4);
+            }
+        }
+    }
+
+    .auth-button {
+        width: 100%;
+        padding: 0.8rem;
+        background-color: $accent;
+        color: #ffffff;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 4px 12px rgba($accent, 0.25);
+        margin-top: 0.5rem;
+
+        &:hover {
+            background-color: color.adjust($accent, $lightness: 5%);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba($accent, 0.35);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    .auth-footer-text {
+        font-size: 0.85rem;
+        color: $text-muted;
+        text-align: center;
+        margin: 0;
+
+        a {
+            color: $accent;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 0.25rem;
+            transition: color 0.2s;
+
+            &:hover {
+                text-decoration: underline;
+                color: color.adjust($accent, $lightness: 10%);
+            }
+        }
+    }
+
+    .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba($accent, 0.1);
+        border-top-color: $accent;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// Responsive design
+@media (max-width: 480px) {
+    .auth-page {
+        padding: 1rem;
+
+        .form-container {
+            padding: 2rem 1.25rem;
+            gap: 1.5rem;
+        }
+
+        .auth-header {
+            .auth-title {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}

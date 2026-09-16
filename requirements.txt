@@ -1,0 +1,27 @@
+# ==========================================
+# GEN AI - Project Dependencies Requirements
+# ==========================================
+
+# Root Workspace Dependencies
+@google/genai
+cors
+multer
+pdf-parse
+zod
+zod-to-json-schema
+
+# Backend Dependencies
+bcryptjs
+cookie-parser
+dotenv
+express
+jsonwebtoken
+mongoose
+puppeteer
+
+# Frontend Dependencies
+axios
+react
+react-dom
+react-router
+sass

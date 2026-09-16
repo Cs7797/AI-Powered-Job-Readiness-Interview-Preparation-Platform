@@ -1,0 +1,32 @@
+# Dependency directories
+node_modules/
+Frontend/node_modules/
+Backend/node_modules/
+
+# Local env files
+.env
+Backend/.env
+
+# Build outputs
+Frontend/dist/
+dist/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# IDE configuration
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary/Antigravity files
+.gemini/
+.agents/
+walkthrough.md
+implementation_plan.md
+task.md
