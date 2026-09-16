@@ -1,47 +1,69 @@
 # CareerLens AI
 
-CareerLens AI is a web application that helps students and job seekers prepare for a specific job role using AI.
+CareerLens AI is a full-stack AI-powered platform built to help job seekers prepare for specific roles.
 
-You can upload your resume and provide a job description. The application analyzes both and gives you an idea of how well your profile matches the role, what skills you're missing, and what you should focus on before applying or appearing for an interview.
+The application takes a user's resume and job-related information and uses Google Gemini to analyze the profile, identify relevant skills, generate interview questions, and provide preparation guidance.
 
-## What it does
+## Features
 
-- Resume and job description analysis
-- Resume–JD match score
-- Skill gap analysis
+- Resume upload and processing
+- AI-powered resume analysis
+- Job role / job description analysis
+- Resume and job requirement matching
+- Skill gap identification
 - AI-generated interview questions
-- Personalized preparation roadmap
-- Role-specific recommendations
-- Simple dashboard to view the analysis
+- Personalized interview preparation
+- ATS-friendly resume generation
+- PDF generation
+- User authentication and protected routes
 
 ## Tech Stack
 
 ### Frontend
 - React.js
 - Vite
+- React Router
+- Axios
+- Context API
 - Tailwind CSS
-- JavaScript
 
 ### Backend
 - Node.js
 - Express.js
 - MongoDB
 - Mongoose
+- JWT Authentication
+- Multer
 
-### AI
+### AI & Other Tools
 - Google Gemini API
+- Zod
+- Puppeteer
+- Postman
 
-## Project Structure
+## How It Works
+
+The application follows a simple flow:
 
 ```text
-CareerLens-AI/
-│
-├── Backend/
-│   ├── ...
-│
-├── Frontend/
-│   ├── ...
-│
-├── package.json
-├── requirements.txt
-└── README.md
+Resume / Job Information
+          |
+          v
+      Backend API
+          |
+          v
+      Gemini AI
+          |
+     +----+----+
+     |         |
+     v         v
+Skill Gap   Interview
+Analysis    Questions
+     |         |
+     +----+----+
+          |
+          v
+   Preparation Report
+          |
+          v
+      PDF / Resume
