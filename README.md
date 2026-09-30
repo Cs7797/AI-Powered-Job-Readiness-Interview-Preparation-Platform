@@ -32,10 +32,20 @@ The AI generates:
 ### Screenshots
 
   <img width="1917" height="933" alt="image" src="https://github.com/user-attachments/assets/c1943c0a-e1a6-4f90-8793-a49a987f1296" />
+
+  
   <img width="1917" height="943" alt="image" src="https://github.com/user-attachments/assets/a7625bb5-c09c-41df-b39f-bab53629144a" />
+
+  
   <img width="1917" height="936" alt="image" src="https://github.com/user-attachments/assets/16f9e40c-c00b-412b-ac8b-7f2b169578d1" />
+
+  
   <img width="1917" height="936" alt="image" src="https://github.com/user-attachments/assets/1f68b244-21db-42c6-8b5a-ce3a052a350a" />
+
+  
   <img width="1917" height="937" alt="image" src="https://github.com/user-attachments/assets/f11ed5cb-deae-4042-8f1a-b90728039590" />
+
+  
   <img width="1917" height="933" alt="image" src="https://github.com/user-attachments/assets/96fcf798-f79c-4304-9f4d-a4df554ba003" />
   
 
