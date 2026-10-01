@@ -4,7 +4,7 @@ import { connectToDb } from "./config/db.js";
 
 let dbConnected = false;
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   try {
     if (!dbConnected) {
       await connectToDb();
@@ -20,3 +20,21 @@ export default async function handler(req, res) {
     });
   }
 }
+
+// Local development
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 3000;
+
+  app.listen(PORT, async () => {
+    try {
+      await connectToDb();
+      dbConnected = true;
+      console.log(`Server running on http://localhost:${PORT}`);
+    } catch (error) {
+      console.error("Database connection failed:", error);
+    }
+  });
+}
+
+// Vercel
+export default handler;
