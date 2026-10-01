@@ -46,7 +46,9 @@ The AI generates:
   <img width="1917" height="937" alt="image" src="https://github.com/user-attachments/assets/f11ed5cb-deae-4042-8f1a-b90728039590" />
 
   
-  <img width="1917" height="933" alt="image" src="https://github.com/user-attachments/assets/96fcf798-f79c-4304-9f4d-a4df554ba003" />
+<img width="1917" height="926" alt="image" src="https://github.com/user-attachments/assets/f4528252-029a-4467-8cff-bb7ec1c0cb48" />
+
+
   
 
 
