@@ -98,22 +98,26 @@ export const generateResume = async (req, res) => {
       interview.selfDescription,
     );
 
-    // Step 2: Convert the generated HTML into PDF
+    // Step 2: Convert HTML into PDF
     const pdf = await generatePdfFromHtml(resumeHtml);
+
+    // Convert Puppeteer's Uint8Array to Node Buffer
+    const pdfBuffer = Buffer.from(pdf);
+
     console.log("PDF generated:", {
-      type: typeof pdf,
-      isBuffer: Buffer.isBuffer(pdf),
-      size: pdf?.length,
-      header: pdf?.subarray(0, 5).toString(),
+      isBuffer: Buffer.isBuffer(pdfBuffer),
+      size: pdfBuffer.length,
+      header: pdfBuffer.subarray(0, 5).toString(),
     });
-    // Step 3: Send PDF to browser
+
+    // Step 3: Send PDF
     res.set({
       "Content-Type": "application/pdf",
       "Content-Disposition": 'attachment; filename="optimized-resume.pdf"',
-      "Content-Length": pdf.length,
+      "Content-Length": pdfBuffer.length,
     });
 
-    return res.send(pdf);
+    return res.send(pdfBuffer);
   } catch (error) {
     console.error("Resume generation error:", error);
 
