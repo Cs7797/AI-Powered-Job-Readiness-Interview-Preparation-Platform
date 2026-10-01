@@ -2,6 +2,11 @@ import User from "../models/user.model.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
+const cookieOptions = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+};
 
 const generateToken = (userId) => {
     const payload = { userId };
@@ -29,7 +34,7 @@ export const registerUser = async (req, res) => {
             password:hashedPassword
         })
        const token=generateToken(newUser._id.toString())
-        res.cookie("token", token,{httpOnly:true})
+        res.cookie("token", token, cookieOptions);
         
        return res.status(201).json({
          message: "User created successfully",
@@ -64,7 +69,7 @@ export const loginUser = async (req, res) => {
         }
 
         const token = generateToken(user._id.toString())
-        res.cookie("token", token,{httpOnly:true});
+        res.cookie("token", token, cookieOptions);
         return res.status(200).json({
           message: "User Logged in!",
           success: true,
