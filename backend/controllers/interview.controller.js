@@ -1,6 +1,8 @@
 import {PDFParse} from "pdf-parse"
 import { generateInterviewReport } from "../services/ai.service.js"
-import {  interviewReport } from "../models/report.model.js"
+import { interviewReport } from "../models/report.model.js"
+import { generateResumePdf } from "../services/ai.service.js"
+import { generatePdfFromHtml } from "../services/pdf.service.js"
 
 export const generateReport = async (req,res) => {
     try {
@@ -60,6 +62,51 @@ export const getAllReports = async (req, res) => {
     });
   } catch (error) {
     return res.status(400).json({
+      message: error.message,
+      success: false,
+    });
+  }
+};
+
+
+export const generateResume = async (req, res) => {
+  try {
+    const { interviewId } = req.params;
+
+    const interview = await interviewReport.findOne({
+      _id: interviewId,
+      user: req.user,
+    });
+
+    if (!interview) {
+      return res.status(404).json({
+        message: "Interview report not found",
+        success: false,
+      });
+    }
+
+    // Step 1: Generate ATS-optimized HTML using Gemini
+    const resumeHtml = await generateResumePdf(
+      interview.resume,
+      interview.jobDescription,
+      interview.selfDescription,
+    );
+
+    // Step 2: Convert the generated HTML into PDF
+    const pdf = await generatePdfFromHtml(resumeHtml);
+
+    // Step 3: Send PDF to browser
+    res.set({
+      "Content-Type": "application/pdf",
+      "Content-Disposition": 'attachment; filename="optimized-resume.pdf"',
+      "Content-Length": pdf.length,
+    });
+
+    return res.send(pdf);
+  } catch (error) {
+    console.error("Resume generation error:", error);
+
+    return res.status(500).json({
       message: error.message,
       success: false,
     });

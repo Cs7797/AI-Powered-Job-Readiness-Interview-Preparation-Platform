@@ -30,3 +30,11 @@ export const getInterviewReportById = async (interviewId) => {
   const response = await api.get(`/report/${interviewId}`);
   return response.data;
 };
+
+export const generateResume = async (interviewId) => {
+  const response = await api.get(`/generate-resume/${interviewId}`, {
+    responseType: "blob",
+  });
+
+  return response.data;
+};

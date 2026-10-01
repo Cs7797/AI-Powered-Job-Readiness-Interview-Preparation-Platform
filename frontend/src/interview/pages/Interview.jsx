@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useInterview } from "../hooks/useInterview";
+import { useParams } from "react-router-dom";
 
 const Interview = () => {
-  const { report, loading } = useInterview();
-
+  
+  const { report, loading, downloadResume } = useInterview();
   const [activeSection, setActiveSection] = useState("technical");
   const [openQuestion, setOpenQuestion] = useState(null);
+  const { interviewId } = useParams();
 
   // -----------------------------
   // Loading
@@ -372,6 +374,47 @@ const Interview = () => {
                     ? "Good match with some gaps"
                     : "Areas need improvement"}
               </p>
+              <div className="mt-6">
+                <button
+                  onClick={() => downloadResume(interviewId)}
+                  disabled={loading}
+                  className="
+      w-full
+      flex
+      items-center
+      justify-center
+      gap-2
+      px-4
+      py-3
+      rounded-xl
+      bg-indigo-600
+      hover:bg-indigo-500
+      disabled:opacity-50
+      disabled:cursor-not-allowed
+      text-sm
+      font-semibold
+      text-white
+      transition-all
+      duration-200
+    "
+                >
+                  {loading ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Generating Resume...
+                    </>
+                  ) : (
+                    <>
+                      <span>✦</span>
+                      Generate Tailored Resume
+                    </>
+                  )}
+                </button>
+
+                <p className="text-[11px] text-slate-600 text-center mt-2">
+                  AI-optimized for this job description
+                </p>
+              </div>
 
               {/* Divider */}
 

@@ -5,6 +5,7 @@ import {
   generateInterviewReport,
   getAllInterviewReports,
   getInterviewReportById,
+  generateResume,
 } from "../services/interview.api";
 
 import { InterviewContext } from "../services/interview.context.jsx";
@@ -87,6 +88,36 @@ export const useInterview = () => {
     }
   }, [interviewId, getReportById]);
 
+   const downloadResume = useCallback(
+    async (id) => {
+      setLoading(true);
+
+      try {
+        const pdfBlob = await generateResume(id);
+
+        const url = window.URL.createObjectURL(
+          new Blob([pdfBlob], { type: "application/pdf" }),
+        );
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "optimized-resume.pdf";
+
+        document.body.appendChild(link);
+        link.click();
+
+        link.remove();
+        window.URL.revokeObjectURL(url);
+      } catch (error) {
+        console.error("Failed to generate resume:", error);
+        throw error;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [setLoading],
+  );
+
   return {
     loading,
     generateReport,
@@ -94,5 +125,6 @@ export const useInterview = () => {
     getReports,
     report,
     reports,
+    downloadResume,
   };
 };
