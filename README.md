@@ -6,7 +6,7 @@ The platform analyzes a candidate's profile against a job description and genera
 
 ---
 ## ITS LIVE!! Check it Out
-###(click here !)[https://careerlens-ai-silk.vercel.app/]###
+### https://careerlens-ai-silk.vercel.app/
 
 ## 🚀 Features
 
