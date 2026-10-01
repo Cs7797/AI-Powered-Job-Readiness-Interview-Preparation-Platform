@@ -100,7 +100,12 @@ export const generateResume = async (req, res) => {
 
     // Step 2: Convert the generated HTML into PDF
     const pdf = await generatePdfFromHtml(resumeHtml);
-
+    console.log("PDF generated:", {
+      type: typeof pdf,
+      isBuffer: Buffer.isBuffer(pdf),
+      size: pdf?.length,
+      header: pdf?.subarray(0, 5).toString(),
+    });
     // Step 3: Send PDF to browser
     res.set({
       "Content-Type": "application/pdf",
