@@ -5,6 +5,8 @@ CareerLens AI is an AI-powered career and interview preparation platform designe
 The platform analyzes a candidate's profile against a job description and generates a personalized interview preparation report using Google Gemini.
 
 ---
+## ITS LIVE!! Check it Out
+###(click here !)[https://careerlens-ai-silk.vercel.app/]###
 
 ## 🚀 Features
 
