@@ -8,12 +8,13 @@
   "main": "index.js",
   "engines": {
     "node": "22.x"
-},
+  },
   "scripts": {
     "dev": "nodemon server.js"
   },
   "dependencies": {
     "@google/genai": "^2.24.0",
+    "@sparticuz/chromium": "^153.0.0",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
@@ -25,6 +26,7 @@
     "nodemon": "^3.1.14",
     "pdf-parse": "^2.4.5",
     "puppeteer": "^25.12.0",
+    "puppeteer-core": "^25.12.0",
     "zod": "^4.6.5",
     "zod-to-json-schema": "^3.25.2"
   }

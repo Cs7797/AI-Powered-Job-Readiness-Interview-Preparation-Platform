@@ -1,9 +1,20 @@
 import puppeteer from "puppeteer";
+import puppeteerCore from "puppeteer-core";
+import chromium from "@sparticuz/chromium";
 
 export const generatePdfFromHtml = async (html) => {
-  const browser = await puppeteer.launch({
-    headless: true,
-  });
+  const isVercel = process.env.VERCEL === "1";
+
+  const browser = isVercel
+    ? await puppeteerCore.launch({
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath(),
+        headless: true,
+      })
+    : await puppeteer.launch({
+        headless: true,
+      });
 
   try {
     const page = await browser.newPage();
