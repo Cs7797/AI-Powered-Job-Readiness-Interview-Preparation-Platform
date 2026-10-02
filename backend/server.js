@@ -2,14 +2,9 @@ import "dotenv/config";
 import app from "./src/app.js";
 import { connectToDb } from "./config/db.js";
 
-let dbConnected = false;
-
 async function handler(req, res) {
   try {
-    if (!dbConnected) {
-      await connectToDb();
-      dbConnected = true;
-    }
+    await connectToDb();
 
     return app(req, res);
   } catch (error) {
@@ -28,7 +23,6 @@ if (process.env.NODE_ENV !== "production") {
   app.listen(PORT, async () => {
     try {
       await connectToDb();
-      dbConnected = true;
       console.log(`Server running on http://localhost:${PORT}`);
     } catch (error) {
       console.error("Database connection failed:", error);
@@ -36,5 +30,4 @@ if (process.env.NODE_ENV !== "production") {
   });
 }
 
-// Vercel
 export default handler;
